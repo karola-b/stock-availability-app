@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # local
     'store.apps.StoreConfig',
+    'authentication.apps.AuthenticationConfig',
 ]
 
 MIDDLEWARE = [
