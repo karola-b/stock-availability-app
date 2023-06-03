@@ -5,16 +5,11 @@
     <title>Lista produktów</title>
 </head>
 <body>
-<h2>Produkty:</h2>
-<table>
-        <th>Id produktu</th>
-        <th>Nazwa produktu</th>
-     {% for item in list_of_products %}
-    <tr>
-         <td>{{ item.product_id}}</td>
-         <td>{{ item.product_name }}</td>
-    </tr>
+<h2>Dostępne produkty:</h2>
+<ul>
+    {% for item in list_of_products %}
+    <li><a href="{% url 'store:product_view' '1' %}"> {{ item.name }}</a></li>
        {% endfor %}
-    </table>
+    </ul>
 </body>
 </html>
