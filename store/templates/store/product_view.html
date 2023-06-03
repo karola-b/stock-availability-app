@@ -5,9 +5,9 @@
     <title>Materiały potrzebne do wykonania produktu</title>
 </head>
 <body>
-Do wykonania produktu {{ product.name }} potrzeba:
+<h2>Do wykonania produktu {{ product.name }} potrzeba:</h2>
 <table>
-        <th>id materiału</th>
+        <th>Rodzaj materiału</th>
         <th>Ilość</th>
      {% for item in product.productmaterial_set.all %}
     <tr>
