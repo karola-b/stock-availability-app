@@ -5,6 +5,7 @@ from store.models import Material, Product, ProductMaterial
 
 
 @login_required(login_url='authenticate:login')
+# widok na magazyn
 def index(request):
 
     query_results = Material.objects.all()
@@ -40,3 +41,14 @@ def product_view(request, pk):
             "product": product,
         }
     )
+
+@login_required(login_url='store:fail')
+def home(request):
+    return render(request,
+                  'store/home.html')
+
+
+def fail(request):
+    return render(request,
+                  'store/fail.html')
+
