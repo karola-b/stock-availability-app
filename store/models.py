@@ -27,6 +27,18 @@ class Color(models.Model):
     code = models.CharField(max_length=50)
     name = models.CharField(max_length=100)
 
+
+class Order(models.Model):
+    products = models.ManyToManyField('Product', through='OrderProduct')
+    created = models.DateTimeField(auto_now_add=True)
+
+
+class OrderProduct(models.Model):
+    product = models.ForeignKey('Product', on_delete=models.CASCADE)
+    order = models.ForeignKey('Order', on_delete=models.CASCADE)
+    amount = models.SmallIntegerField()
+
+
 # p1 = Product.objects.get(code='xyz')
 #
 # ProductMaterial.objects.filter(product=p1)
