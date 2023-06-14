@@ -8,11 +8,17 @@ class Material(models.Model):
     amount = models.DecimalField(max_digits=5, decimal_places=2)
     color = models.ForeignKey('Color', on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
+
 
 class Product(models.Model):
     code = models.CharField(max_length=50)
     name = models.CharField(max_length=100)
     materials = models.ManyToManyField('Material', through='ProductMaterial')
+
+    def __str__(self):
+        return self.name
 
 
 class ProductMaterial(models.Model):
@@ -22,10 +28,16 @@ class ProductMaterial(models.Model):
         'Material', on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=5, decimal_places=2)
 
+    def __str__(self):
+        return self.product.name, self.material.name
+
 
 class Color(models.Model):
     code = models.CharField(max_length=50)
     name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
 
 
 class Order(models.Model):
