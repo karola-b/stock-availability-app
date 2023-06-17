@@ -6,6 +6,7 @@ from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 
 from store.models import Material, Product
+from store.utils import pdf_to_csv, fetch_from_csv
 
 
 @login_required(login_url='authentication:login_view')
@@ -67,14 +68,12 @@ def update_store(request):
             request_file.name = new_name
             fs = FileSystemStorage()
             file = fs.save(request_file.name, request_file)
-            uploaded_file_url = fs.url(file)
 
+            csv_file = pdf_to_csv(request_file.name)
+            fetch_from_csv(csv_file)
             return render(
                 request,
                 'store/update.html',
-                context={
-                    'uploaded_file_url': uploaded_file_url,
-                }
             )
     return render(
         request,

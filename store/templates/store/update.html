@@ -5,15 +5,12 @@
     <title>Title</title>
 </head>
 <body>
-<form method = 'POST'>{% csrf_token %}
+<form method = 'POST' enctype="multipart/form-data"> {% csrf_token %}
 
     <input type="file" name="order">
     <button type="submit">Wczytaj zamówienie</button>
   </form>
 
-  {% if uploaded_file_url %}
-    <p>Zamówienie zostało wczytane, ścieżka: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
-  {% endif %}
 
   <p><a href="{% url 'store:home' %}">Powrót do strony głównej</a></p>
 </body>

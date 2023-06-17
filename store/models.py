@@ -5,7 +5,7 @@ class Material(models.Model):
     code = models.CharField(max_length=50)
     name = models.CharField(max_length=100)
     unit = models.CharField(max_length=10)
-    amount = models.DecimalField(max_digits=5, decimal_places=2)
+    amount = models.DecimalField(max_digits=6, decimal_places=2)
     color = models.ForeignKey('Color', on_delete=models.CASCADE)
 
     def __str__(self):
@@ -26,7 +26,7 @@ class ProductMaterial(models.Model):
         'Product', on_delete=models.CASCADE)
     material = models.ForeignKey(
         'Material', on_delete=models.CASCADE)
-    amount = models.DecimalField(max_digits=5, decimal_places=2)
+    amount = models.DecimalField(max_digits=6, decimal_places=2)
 
     def __str__(self):
         return self.product.name, self.material.name
