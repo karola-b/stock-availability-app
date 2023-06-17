@@ -1,20 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Materiały potrzebne do wykonania produktu</title>
-</head>
-<body>
-<h2>Do wykonania produktu {{ product.name }} potrzeba:</h2>
-<table>
+{% extends 'store/layout.html' %}
+{% block content %}
+    <h2>Do wykonania produktu {{ product.name }} potrzeba:</h2>
+    <table>
         <th>Rodzaj materiału</th>
         <th>Ilość</th>
-     {% for item in product.productmaterial_set.all %}
+            {% for item in product.productmaterial_set.all %}
     <tr>
          <td>{{ item.material.name }}</td>
          <td>{{ item.amount }}</td>
     </tr>
        {% endfor %}
     </table>
-</body>
-</html>
+{% endblock %}

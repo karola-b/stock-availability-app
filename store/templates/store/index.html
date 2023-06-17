@@ -1,22 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Aktualny stan magazynowy</title>
-</head>
-<body>
-<h2>Stan magazynowy</h2>
-<table>
-        <th>Rodzaj materiału</th>
-        <th>Jednostka</th>
-        <th>Ilość</th>
-     {% for item in query_results %}
-    <tr>
-         <td>{{ item.material_name }}</td>
-         <td>{{ item.unit }}</td>
-         <td>{{ item.amount }}</td>
-    </tr>
-       {% endfor %}
-    </table>
-</body>
-</html>
+{% extends 'store/layout.html' %}
+{% block content %}
+    <h2>Stan magazynowy</h2>
+    <table>
+            <th>Rodzaj materiału</th>
+            <th>Jednostka</th>
+            <th>Ilość</th>
+         {% for item in query_results %}
+        <tr>
+             <td>{{ item.material_name }}</td>
+             <td>{{ item.unit }}</td>
+             <td>{{ item.amount }}</td>
+        </tr>
+           {% endfor %}
+        </table>
+{% endblock %}

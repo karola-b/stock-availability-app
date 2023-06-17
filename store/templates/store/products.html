@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Lista produktów</title>
-</head>
-<body>
-<h2>Dostępne produkty:</h2>
-<ul>
-    {% for item in list_of_products %}
-    <li><a href="{% url 'store:product_view' '1' %}"> {{ item.name }}</a></li>
-       {% endfor %}
+{% extends 'store/layout.html' %}
+{% block content %}
+    <h2>Dostępne produkty:</h2>
+    <ul class="product-list">
+        {% for item in list_of_products %}
+            <li><a class="products-link" href="{% url 'store:product_view' '1' %}"> {{ item.name }}</a></li>
+        {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}

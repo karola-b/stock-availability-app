@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'store/style.css' %}">
+    {% block link-rel %}
+    {% endblock %}
+</head>
+<body>
+    <nav class="menu-box">
+        <ul>
+            <li><a href="{% url 'store:home' %}"> Strona startowa </a></li>
+            <li><a href="{% url 'store:products' %}"> Produkty </a></li>
+            <li><a href="{% url 'store:index' %}"> Magazyn </a></li>
+            <li><button><a href="{% url 'authentication:logout_view' %}">Wyloguj</a></button></li>
+        </ul>
+    </nav>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
