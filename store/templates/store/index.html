@@ -1,7 +1,10 @@
 {% extends 'store/layout.html' %}
 {% block content %}
-    <h2>Stan magazynowy</h2>
-    <table>
+    <div class="header">
+        <h1> Stan magazynowy</h1>
+    </div>
+    <div class="table">
+    <table class="table table-striped table-hover">
             <th>Rodzaj materiału</th>
             <th>Jednostka</th>
             <th>Ilość</th>
@@ -13,4 +16,6 @@
         </tr>
            {% endfor %}
         </table>
+    </div>
+
 {% endblock %}

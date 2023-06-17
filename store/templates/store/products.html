@@ -1,6 +1,8 @@
 {% extends 'store/layout.html' %}
 {% block content %}
-    <h2>Dostępne produkty:</h2>
+    <div class="header">
+    <h1>Dostępne produkty:</h1>
+    </div>
     <ul class="product-list">
         {% for item in list_of_products %}
             <li><a class="products-link" href="{% url 'store:product_view' '1' %}"> {{ item.name }}</a></li>
