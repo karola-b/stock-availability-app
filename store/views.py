@@ -1,11 +1,15 @@
+from datetime import date
+from django.db.models import OuterRef
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
 
-from store.models import Material, Product, ProductMaterial
+from store.models import Material, Product
+from store.utils import pdf_to_csv, fetch_from_csv
 
 
-@login_required(login_url='authenticate:login')
-# widok na magazyn
+@login_required(login_url='authentication:login_view')
 def index(request):
 
     query_results = Material.objects.all()
@@ -18,7 +22,7 @@ def index(request):
     )
 
 
-@login_required(login_url='authenticate:login')
+@login_required(login_url='authentication:login_view')
 def products(request):
     list_of_products = Product.objects.all()
     return render(
@@ -31,7 +35,7 @@ def products(request):
     )
 
 
-@login_required(login_url='authenticate:login')
+@login_required(login_url='authentication:login_view')
 def product_view(request, pk):
     product = get_object_or_404(Product, id=pk)
     return render(
@@ -41,6 +45,7 @@ def product_view(request, pk):
             "product": product,
         }
     )
+
 
 @login_required(login_url='store:fail')
 def home(request):
@@ -52,3 +57,25 @@ def fail(request):
     return render(request,
                   'store/fail.html')
 
+
+@login_required(login_url='authentication:login_view')
+def update_store(request):
+    if request.method == 'POST':
+        request_file = request.FILES[
+            'order'] if 'order' in request.FILES else None
+        if request_file:
+            new_name = str(date.today())
+            request_file.name = new_name
+            fs = FileSystemStorage()
+            file = fs.save(request_file.name, request_file)
+
+            csv_file = pdf_to_csv(request_file.name)
+            fetch_from_csv(csv_file)
+            return render(
+                request,
+                'store/index.html',
+            )
+    return render(
+        request,
+        'store/update.html',
+    )

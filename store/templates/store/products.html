@@ -8,7 +8,7 @@
 <h2>Dostępne produkty:</h2>
 <ul>
     {% for item in list_of_products %}
-    <li><a href="{% url 'store:product_view' '1' %}"> {{ item.name }}</a></li>
+    <li><a href="{% url 'store:product_view' item.id %}"> {{ item.name }}</a></li>
        {% endfor %}
     </ul>
 </body>
