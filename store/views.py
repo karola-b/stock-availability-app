@@ -73,7 +73,7 @@ def update_store(request):
             fetch_from_csv(csv_file)
             return render(
                 request,
-                'store/update.html',
+                'store/index.html',
             )
     return render(
         request,
