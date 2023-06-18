@@ -130,3 +130,5 @@ AUTH_USER_MODEL = 'authentication.User'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'orders') # media directory in the root directory
 MEDIA_URL = '/orders/'
+
+LOGIN_URL = 'authentication:login_view'

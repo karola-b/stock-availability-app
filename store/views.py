@@ -47,15 +47,10 @@ def product_view(request, pk):
     )
 
 
-@login_required(login_url='store:fail')
+@login_required
 def home(request):
     return render(request,
                   'store/home.html')
-
-
-def fail(request):
-    return render(request,
-                  'store/fail.html')
 
 
 @login_required(login_url='authentication:login_view')

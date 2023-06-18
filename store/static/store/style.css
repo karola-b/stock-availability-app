@@ -90,3 +90,10 @@ img {
 .table-small{
     padding: 0px 520px 70px 520px;
 }
+
+.alert {
+    padding-left: 10px;
+}
+.alert p {
+    color: red;
+}
