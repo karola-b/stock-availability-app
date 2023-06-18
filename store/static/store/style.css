@@ -4,8 +4,6 @@ html {
     font-family:'Roboto', sans-serif;
 }
 
-
-
 .menu-box {
     background-color: darkcyan;
     top: 0;
@@ -19,7 +17,7 @@ html {
 .menu-box ul li {
     list-style-type: none;
     display: inline-block;
-    width: 24%;
+    width: 19%;
     text-align: center;
     padding: 30px 0;
 
@@ -97,3 +95,4 @@ img {
 .alert p {
     color: red;
 }
+

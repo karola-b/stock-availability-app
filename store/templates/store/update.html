@@ -1,6 +1,14 @@
 {% extends 'store/layout.html' %}
+
+{% block title %}
+    Aktualizacja magazynu
+{% endblock %}
+
 {% block content %}
-<div>
+        <div class="header">
+        <h1> Zaktualizuj stan magazynowy</h1>
+    </div>
+<div class="table-small">
 <form method = 'POST' enctype="multipart/form-data"> {% csrf_token %}
 
     <input type="file" name="order">
