@@ -1,6 +1,6 @@
 from datetime import date
 from django.db.models import OuterRef
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
@@ -71,10 +71,8 @@ def update_store(request):
 
             csv_file = pdf_to_csv(request_file.name)
             fetch_from_csv(csv_file)
-            return render(
-                request,
-                'store/index.html',
-            )
+            return redirect('store:index')
+
     return render(
         request,
         'store/update.html',
